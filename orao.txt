@@ -1,0 +1,93 @@
+using System;
+
+namespace _202328282
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Clear();
+
+            bool exit = false;
+            Console.SetCursorPosition(10, 10);
+            Console.CursorSize = 100;
+
+            while (!exit)
+            {
+                switch (Console.ReadKey(true).Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        Console.CursorTop--;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        Console.CursorTop++;
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        Console.CursorTop--;
+                        break;
+                    case ConsoleKey.RightArrow:
+                        Console.CursorTop++;
+                        break;
+                    case ConsoleKey.Escape:
+                        exit = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+}
+
+
+
+FÜGGVÉNY:
+using System;
+
+namespace _20230228ora
+{
+    class Program
+    {
+        enum alignType {left, right, center}
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine(AlignText("alma",10,alignType.left));
+            Console.WriteLine(AlignText("alma",10,alignType.right));
+            WriteXY(5, 10, "Hello World", ConsoleColor.DarkGray, ConsoleColor.DarkCyan);
+            Console.ReadKey();
+        }
+
+        static void WriteXY(int x, int y, string text, ConsoleColor BackColor, ConsoleColor ForeColor)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.BackgroundColor = BackColor;
+            Console.ForegroundColor = ForeColor;
+            Console.Write(text);
+        }
+
+        static string AlignText(string text, int len, alignType type)
+        {
+            switch (type)
+            {
+                case alignType.left:
+                    text = text.PadRight(len,'*');
+                    break;
+                case alignType.right:
+                    text = text.PadLeft(len,'*');
+                    break;
+                case alignType.center:
+                    break;
+                default:
+                    break;
+            }
+            return text;
+        }
+   
+
+    }
+}
+
+
+
+
